@@ -1,0 +1,26 @@
+GET http://localhost:3000/event
+###
+# @name createEvent
+POST http://localhost:3000/event
+Content-Type: application/json
+
+{
+    "name": "New Event B",
+    "description": "New event",
+    "date": "2024-06-18T00:00:00",
+    "price": 200
+   
+}
+###
+@eventId ={{ createEvent.response.body.id }}
+###
+GET http://localhost:3000/event/{{eventId}}
+
+###
+# @name createSpot
+POST http://localhost:3000/events/{{eventId}}/spots
+Content-Type: application/json
+
+{
+    "name": "A1"   
+}
